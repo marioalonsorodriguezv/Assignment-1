@@ -25,7 +25,7 @@ total_fatalities = fatalities_85_99 + fatalities_00_14
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure, echo=TRUE}
 plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
 ```
 
