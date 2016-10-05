@@ -3,7 +3,6 @@ Author: Rita Alvarez Martinez
 Date: October 5th
 title: "Airline safety dataset Analysis"
 output:
-  html_document: default
   pdf_document: default
 ---
 
@@ -27,7 +26,7 @@ total_fatalities = fatalities_85_99 + fatalities_00_14
 
 You can also embed plots, for example:
 
-```{r pressure, echo=TRUE}
+```{r pressure, echo=FALSE}
 plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
 ```
 
