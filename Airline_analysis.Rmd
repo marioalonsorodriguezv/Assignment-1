@@ -14,7 +14,6 @@ mydat <-read.csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/
 mean(mydat$incidents_85_99)
 mean(mydat$incidents_00_14)
 sort(mydat$avail_seat_km_per_week)
-#mydat$total_incidents<-mydat$incidents_85_99 + mydat$incidents_00_14
 
 mydat <- transform( mydat,
 total_incidents = incidents_85_99 + incidents_00_14,
@@ -26,7 +25,7 @@ total_fatalities = fatalities_85_99 + fatalities_00_14
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure, eval=TRUE}
 plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
 ```
 
