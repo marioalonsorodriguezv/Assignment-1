@@ -2,8 +2,7 @@
 Author: Rita Alvarez Martinez
 Date: October 5th
 title: "Airline safety dataset Analysis"
-output:
-  pdf_document: default
+output:html_document
 ---
 
 
