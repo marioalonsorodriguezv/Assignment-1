@@ -10,7 +10,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Working directory
+# Working directory in my computer
 
 Assigning the working directory in my computer
 
@@ -18,7 +18,7 @@ Assigning the working directory in my computer
 setwd('C:/Users/Schmuziger/Documents/R_CDA')
 ```
 
-# Importing and creating Dataset
+# Importing and creating dataset
 
 ```{r data, results='asis', tidy=TRUE, echo=FALSE}
 dataset <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/terrorism/eu_terrorism_fatalities_by_country.csv")
@@ -73,3 +73,14 @@ sum(d2001back$Germany)/31
 ```
 
 # % of Attacks per year in small and big countries
+
+
+```{r data, results='asis', tidy=TRUE, echo=FALSE}
+dataset <- transform(dataset, Big_Countries = France + Germany + Spain + United.Kingdom + Italy + Greece, Small_Countries = Luxembourg + Denmark + Belgium + Portugal + Ireland + Netherlands)
+
+sum(dataset$Big_Countries)/dataset$iyear
+
+sum(dataset$Small_Countries)/dataset$iyear
+```
+
+# Based on this poor and biased analysis, we can say that living in a big country in Europe increases almost 3 times your chances of being a victim of a terrorist attack than living in a small country
