@@ -86,3 +86,7 @@ sum(dataset$Small_Countries)/dataset$iyear
 ```
 
 Based on this poor and biased analysis, we can say that living in a big country in Europe increases almost 3 times your chances of being a victim of a terrorist attack than living in a small country
+
+```{r data9, results='asis', tidy=TRUE, echo=FALSE}
+source("Airline_data_analysis.R")
+```
