@@ -24,4 +24,12 @@ Then it calculates means. This exercise is useful to compare the mean number of 
 ```{r}
 mean(mydat$incidents_85_99)
 ```
- and mean number of indicents 2000-2014 is `r mean(mydat$incidents_00_14)` 
+and mean number of indicents 2000-2014 is `r mean(mydat$incidents_00_14)` .
+ 
+The file also creates three variables that are added to the existing dataframe. The variables are *total_indicents*, *total_fatal_accidents* and *total_fatalities*. These variables are just the totals for the entire time period we have available data: 1985-2014.
+
+These variables were useful to create three indexes that represent the amount of incidents, fatal accidents and fatalities per number of available seat kilometers per week and multiplied by 1000000000. This is useful to learn about which airlines had more incidents, fatal accidents and fatalities taking into account that the more (less) they fly the bigger (smaller) is the probability of this events to happen.The indexes were added as new variables in the dataframe.
+
+After this three different dataframes were created each of them sorting by index (smallest to largest) to check which ones were the most *dangerous* airlines (please note that I am aware that this is a quite strong afirmation with the data limitations I have but still this is what I can do in this case). The bigger the index, the more likely is the airline to suffer from indicents, fatal accidents and fatalities respectively.
+
+Lastly, I created three graphs using incidents, fatal accidents and fatalities against number of available seat kilometers per week. In this way we can clearly see that some airlines are outliers and that are out of the logic that the more the airline fly, the more incidents, fatal accidents or fatalities would suffer from. Therefore, the outlier airlines are more likely to suffer this kind of accidents.
