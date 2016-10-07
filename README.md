@@ -33,3 +33,7 @@ These variables were useful to create three indexes that represent the amount of
 After this three different dataframes were created each of them sorting by index (smallest to largest) to check which ones were the most *dangerous* airlines (please note that I am aware that this is a quite strong afirmation with the data limitations I have but still this is what I can do in this case). The bigger the index, the more likely is the airline to suffer from indicents, fatal accidents and fatalities respectively.
 
 Lastly, I created three graphs using incidents, fatal accidents and fatalities against number of available seat kilometers per week. In this way we can clearly see that some airlines are outliers and that are out of the logic that the more the airline fly, the more incidents, fatal accidents or fatalities would suffer from. Therefore, the outlier airlines are more likely to suffer this kind of accidents.
+
+```{r plot1, echo=FALSE}
+plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
+```
