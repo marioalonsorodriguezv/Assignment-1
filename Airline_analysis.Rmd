@@ -30,5 +30,18 @@ After this three different dataframes were created each of them sorting by index
 Lastly, I created three graphs using incidents, fatal accidents and fatalities against number of available seat kilometers per week. In this way we can clearly see that some airlines are outliers and that are out of the logic that the more the airline fly, the more incidents, fatal accidents or fatalities would suffer from. Therefore, the outlier airlines are more likely to suffer this kind of accidents.
 
 ```{r plot1, echo=FALSE}
+<<<<<<< HEAD
 plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
 ```
+=======
+plot(mydat$avail_seat_km_per_week, mydat$total_incidents, main = "Airline Incidents by KMs Flown Per Week", xlab = "Total Incidents", ylab = "KMs flown per week")
+```
+
+```{r echo=FALSE}
+plot(mydat$avail_seat_km_per_week, mydat$total_fatal_accidents)
+```
+
+```{r echo=FALSE}
+plot(mydat$avail_seat_km_per_week, mydat$total_fatalities)
+```
+>>>>>>> origin/master
