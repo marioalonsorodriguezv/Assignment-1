@@ -20,4 +20,8 @@ fatal_accidents_00_14  |Total numer of fatal accidents 2000-2014
 fatalities_00_14       |Total numer of fatalities, 2000-2014
 
 
-Then it calculates means. This exercise is useful to compare the mean number of  incidents in the period of time 1985-1999 with the mean number of accidents in the period of time 2000-2014. It then does the same exercise for the number of fatal accidents and the number of fatalities. Mean number of indicents 1985-1999 is equal to `r mean(mydat$incidents_85_99)` and mean number of indicents 2000-2014 is `r mean(mydat$incidents_00_14)` 
+Then it calculates means. This exercise is useful to compare the mean number of  incidents in the period of time 1985-1999 with the mean number of accidents in the period of time 2000-2014. It then does the same exercise for the number of fatal accidents and the number of fatalities. Mean number of indicents 1985-1999 is equal to
+```{r echo=FALSE}
+mean(mydat$incidents_85_99)
+```
+ and mean number of indicents 2000-2014 is `r mean(mydat$incidents_00_14)` 
