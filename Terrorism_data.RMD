@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 First, I will assigne the working directory in my computer
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
+```{r data1, results='asis', tidy=TRUE, echo=FALSE}
 setwd('C:/Users/Schmuziger/Documents/R_CDA')
 ```
 
@@ -22,7 +22,7 @@ setwd('C:/Users/Schmuziger/Documents/R_CDA')
 
 I decided to work with the Terrorism data from [FiveThirtyEight](https://github.com/fivethirtyeight/data), especifically the one containing the total fatalities from terrorism incidents in the EU countries that joined in 1986 or earlier, for each country from 1972 through 2014 (eu_terrorism_fatalities_by_country.csv) 
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
+```{r data2, results='asis', tidy=TRUE, echo=FALSE}
 dataset <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/terrorism/eu_terrorism_fatalities_by_country.csv")
 ```
 
@@ -30,7 +30,7 @@ dataset <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/mast
 
 I did some random analysis on the cases of terrorism in general and regarding the mean and variance of attacks that happened in Germany
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
+```{r data3, results='asis', tidy=TRUE, echo=FALSE}
 summary(dataset)
 
 mean(dataset$Germany)
@@ -41,7 +41,7 @@ var(dataset$Germany)
 
 I decided to plot the German Data to analyse if there is any visual relation between the attacks in the country and the variable "iyears"
 
-```{r data, tidy=TRUE, echo=FALSE}
+```{r data4, tidy=TRUE, echo=FALSE}
 plot(dataset$Germany, dataset$iyear)
 ```
 
@@ -49,7 +49,7 @@ plot(dataset$Germany, dataset$iyear)
 
 Although not showing any clear trend, I decided to look if there was any increase of terrorist attacks after 2001, considering the 2001 terrorist attacks and the subsequent wars that resulted from it. In order to do so, I subset my data in two different periods: Before 2001 and After 2001 (with 2001 included):
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
+```{r data5, results='asis', tidy=TRUE, echo=FALSE}
 d2001on <- subset(dataset, iyear >= 2001)
 summary(d2001on)
 d2001back <- subset(dataset, iyear < 2001)
@@ -60,7 +60,7 @@ summary(d2001back)
 
 After that, I decided to check whether the average percentage of attacks each year changed between these two periods that I analyzed in Germany:
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
+```{r data6, results='asis', tidy=TRUE, echo=FALSE}
 sum(d2001on$Germany)/14
 
 sum(d2001back$Germany)/31
@@ -72,7 +72,7 @@ This basic analysis showed that the average % of attacks was higher in the perio
 
 Another theory would be to test whether big countries of the EU are more susceptible to terrorist attacks than small countries. In order to do that, I created two variables: Big_Countries and Small_Countries:
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
+```{r data7, results='asis', tidy=TRUE, echo=FALSE}
 dataset <- transform(dataset, Big_Countries = France + Germany + Spain + United.Kingdom + Italy + Greece, Small_Countries = Luxembourg + Denmark + Belgium + Portugal + Ireland + Netherlands)
 ```
 
@@ -80,7 +80,7 @@ dataset <- transform(dataset, Big_Countries = France + Germany + Spain + United.
 
 After that, I decided to see whether the mean of attacks each year was different between the two groups:
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
+```{r data8, results='asis', tidy=TRUE, echo=FALSE}
 sum(dataset$Big_Countries)/dataset$iyear
 
 sum(dataset$Small_Countries)/dataset$iyear
