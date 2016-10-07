@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Working directory in my computer
 
-Assigning the working directory in my computer
+First, I will assigne the working directory in my computer
 
 ```{r data, results='asis', tidy=TRUE, echo=FALSE}
 setwd('C:/Users/Schmuziger/Documents/R_CDA')
@@ -20,11 +20,15 @@ setwd('C:/Users/Schmuziger/Documents/R_CDA')
 
 # Importing and creating dataset
 
+I decided to work with the Terrorism data from [FiveThirtyEight](https://github.com/fivethirtyeight/data), especifically the one containing the total fatalities from terrorism incidents in the EU countries that joined in 1986 or earlier, for each country from 1972 through 2014 (eu_terrorism_fatalities_by_country.csv) 
+
 ```{r data, results='asis', tidy=TRUE, echo=FALSE}
 dataset <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/terrorism/eu_terrorism_fatalities_by_country.csv")
 ```
 
 # Descriptive statistics
+
+I did some random analysis on the cases of terrorism in general and regarding the mean and variance of attacks that happened in Germany
 
 ```{r data, results='asis', tidy=TRUE, echo=FALSE}
 summary(dataset)
@@ -35,27 +39,15 @@ var(dataset$Germany)
 
 # Plots
 
-Plotting German Data
+I decided to plot the German Data to analyse if there is any visual relation between the attacks in the country and the variable "iyears"
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
-plot(dataset$Germany)
-hist(dataset$Germany)
-```
-
-# changing the data
-
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
-BigCountries <- c("France", "Germany", "Spain", "United.Kingdom", "Italy", "Greece")
-SmallCOuntries <- c("Luxembourg", "Denmark", "Belgium", "Portugal", "Ireland", "Netherlands")
-```
-
-# Dataset only Big Countries
-
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
-summary(BigCountries)
+```{r data, tidy=TRUE, echo=FALSE}
+plot(dataset$Germany, dataset$iyear)
 ```
 
 # Analysis: subsetting datasets
+
+Although not showing any clear trend, I decided to look if there was any increase of terrorist attacks after 2001, considering the 2001 terrorist attacks and the subsequent wars that resulted from it. In order to do so, I subset my data in two different periods: Before 2001 and After 2001 (with 2001 included):
 
 ```{r data, results='asis', tidy=TRUE, echo=FALSE}
 d2001on <- subset(dataset, iyear >= 2001)
@@ -66,26 +58,32 @@ summary(d2001back)
 
 # % of Attacks per year in Germany before and after 2001
 
+After that, I decided to check whether the average percentage of attacks each year changed between these two periods that I analyzed in Germany:
+
 ```{r data, results='asis', tidy=TRUE, echo=FALSE}
 sum(d2001on$Germany)/14
 
 sum(d2001back$Germany)/31
 ```
 
-# % of Attacks per year in small and big countries
+This basic analysis showed that the average % of attacks was higher in the perior before 2001.
 
+# changing the data
+
+Another theory would be to test whether big countries of the EU are more susceptible to terrorist attacks than small countries. In order to do that, I created two variables: Big_Countries and Small_Countries:
 
 ```{r data, results='asis', tidy=TRUE, echo=FALSE}
 dataset <- transform(dataset, Big_Countries = France + Germany + Spain + United.Kingdom + Italy + Greece, Small_Countries = Luxembourg + Denmark + Belgium + Portugal + Ireland + Netherlands)
+```
 
+# % of Attacks per year in small and big countries
+
+After that, I decided to see whether the mean of attacks each year was different between the two groups:
+
+```{r data, results='asis', tidy=TRUE, echo=FALSE}
 sum(dataset$Big_Countries)/dataset$iyear
 
 sum(dataset$Small_Countries)/dataset$iyear
 ```
 
-```{r data, results='asis', tidy=TRUE, echo=FALSE}
-plot(dataset$Big_Countries, colour = dataset$Big_Countries, dataset$Small_Countries)
-```
-
-
-# Based on this poor and biased analysis, we can say that living in a big country in Europe increases almost 3 times your chances of being a victim of a terrorist attack than living in a small country
+Based on this poor and biased analysis, we can say that living in a big country in Europe increases almost 3 times your chances of being a victim of a terrorist attack than living in a small country
