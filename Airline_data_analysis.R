@@ -1,0 +1,49 @@
+#############################################
+############## ASSINGMENT 1 #################
+#COLLABORATIVE SOCIAL SCIENCES DATA ANALYSIS#
+#############################################
+######Author: Rita Alvarez Martinez##########
+#############Date: October 7th###############
+#############################################
+
+
+# Getting the dataset from the web
+mydat <-read.csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
+
+# Compare means for incidents between 1985 and 1999 and between 2000 and 2014
+mean(mydat$incidents_85_99)
+mean(mydat$incidents_00_14)
+
+# Compare means for fatal accidents between 1985 and 1999 and between 2000 and 2014
+mean(mydat$fatal_accidents_85_99)
+mean(mydat$fatal_accidents_00_14)
+
+# Compare means for fatalities between 1985 and 1999 and between 2000 and 2014
+mean(mydat$fatalities_85_99)
+mean(mydat$fatalities_00_14)
+
+
+#Create totals for incidents, fatal accidents and fatalities
+mydat <- transform (mydat,
+                    total_incidents = incidents_85_99 + incidents_00_14,
+                    total_fatal_accidents = fatal_accidents_85_99 + fatal_accidents_00_14,
+                    total_fatalities = fatalities_85_99 + fatalities_00_14)
+
+#Creating index to identify potential dangerous airlines to flight with
+mydat <- transform (mydat,
+                    index_inc_psk= (total_incidents/avail_seat_km_per_week)*1000000000,
+                    index_fat_acc_psk= (total_fatal_accidents/avail_seat_km_per_week)*1000000000,
+                    index_fat_psk= (total_fatalities/avail_seat_km_per_week)*1000000000)
+
+sort1.mydat <- mydat[order(mydat$index_inc_psk), ]
+sort2.mydat <- mydat[order(mydat$index_fat_acc_psk), ]
+sort3.mydat <- mydat[order(mydat$index_fat_psk), ]
+
+# Including Plots
+  
+plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
+
+plot(mydat$avail_seat_km_per_week, mydat$total_fatal_accidents)
+
+plot(mydat$avail_seat_km_per_week, mydat$total_fatalities)
+
