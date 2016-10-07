@@ -43,7 +43,7 @@ sort3.mydat <- mydat[order(mydat$index_fat_psk), ]
 You can also embed plots, for example:
 
 ```{r plot1, echo=FALSE}
-plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
+plot(mydat$avail_seat_km_per_week, mydat$total_incidents, main = "Airline Incidents by KMs Flown Per Week", xlab = "Total Incidents", ylab = "KMs flown per week")
 ```
 
 ```{r echo=FALSE}
