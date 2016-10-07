@@ -52,9 +52,7 @@ Although not showing any clear trend, I decided to look if there was any increas
 
 ```{r data5, results='asis', tidy=TRUE, echo=FALSE}
 d2001on <- subset(dataset, iyear >= 2001)
-summary(d2001on)
 d2001back <- subset(dataset, iyear < 2001)
-summary(d2001back)
 ```
 
 # % of Attacks per year in Germany before and after 2001
