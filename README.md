@@ -37,3 +37,5 @@ Lastly, I created three graphs using incidents, fatal accidents and fatalities a
 ```{r plot1, echo=FALSE}
 plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
 ```
+
+Pull request - Mario
