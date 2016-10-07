@@ -26,7 +26,7 @@ mean(mydat$incidents_85_99)
 ```
 and mean number of indicents 2000-2014 is `r mean(mydat$incidents_00_14)` .
  
-The file also creates three variables that are added to the existing dataframe. The variables are *total_indicents*, *total_fatal_accidents* and *total_fatalities*. These variables are just the totals for the entire time period we have available data: 1985-2014.
+The file also creates three variables that are added to the existing dataframe. The variables are *total_incidents*, *total_fatal_accidents* and *total_fatalities*. These variables are just the totals for the entire time period we have available data: 1985-2014.
 
 These variables were useful to create three indexes that represent the amount of incidents, fatal accidents and fatalities per number of available seat kilometers per week and multiplied by 1000000000. This is useful to learn about which airlines had more incidents, fatal accidents and fatalities taking into account that the more (less) they fly the bigger (smaller) is the probability of this events to happen.The indexes were added as new variables in the dataframe.
 
