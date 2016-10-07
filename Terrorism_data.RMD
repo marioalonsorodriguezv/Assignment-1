@@ -1,6 +1,6 @@
 ---
 title: "TerrorismData"
-author: "RSG"
+author: "Rafael Schmuziger"
 date: "5 Oktober 2016"
 output: pdf_document
 ---
