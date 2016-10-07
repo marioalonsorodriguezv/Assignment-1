@@ -6,7 +6,6 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -14,9 +13,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 First, I will assigne the working directory in my computer
 
+####
+
 ```{r data1, results='asis', tidy=TRUE, echo=FALSE}
-setwd('C:/Users/Schmuziger/Documents/R_CDA')
+setwd('C:/Users/Schmuziger/Desktop/Assignment-1/Assignment-1')
 ```
+
+
 
 # Importing and creating dataset
 
@@ -31,8 +34,6 @@ dataset <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/mast
 I did some random analysis on the cases of terrorism in general and regarding the mean and variance of attacks that happened in Germany
 
 ```{r data3, results='asis', tidy=TRUE, echo=FALSE}
-summary(dataset)
-
 mean(dataset$Germany)
 var(dataset$Germany)
 ```
