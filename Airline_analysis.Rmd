@@ -1,30 +1,21 @@
 ---
-output:
-  pdf_document: default
-  html_document: default
+output: pdf_document
 ---
 # Getting the dataset from the web
+```{r}
 mydat <-read.csv('https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv')
+```
 
-# Compare means for incidents between 1985 and 1999 and between 2000 and 2014
-mean(mydat$incidents_85_99)
-mean(mydat$incidents_00_14)
-
-# Compare means for fatal accidents between 1985 and 1999 and between 2000 and 2014
-mean(mydat$fatal_accidents_85_99)
-mean(mydat$fatal_accidents_00_14)
-
-# Compare means for fatalities between 1985 and 1999 and between 2000 and 2014
-mean(mydat$fatalities_85_99)
-mean(mydat$fatalities_00_14)
 
 
 #Create totals for incidents, fatal accidents and fatalities
+```{r}
 mydat <- transform (mydat,
                     total_incidents = incidents_85_99 + incidents_00_14,
                     total_fatal_accidents = fatal_accidents_85_99 + fatal_accidents_00_14,
                     total_fatalities = fatalities_85_99 + fatalities_00_14)
 
+```
 
 ##Airline_data_analysis.R
 The first thing that this file does is pulling the data from [FiveThirtyEight](https://github.com/fivethirtyeight/data). This dataset contains the following variables:
@@ -51,18 +42,16 @@ These variables were useful to create three indexes that represent the amount of
 After this three different dataframes were created each of them sorting by index (smallest to largest) to check which ones were the most *dangerous* airlines (please note that I am aware that this is a quite strong afirmation with the data limitations I have but still this is what I can do in this case). The bigger the index, the more likely is the airline to suffer from indicents, fatal accidents and fatalities respectively.
 
 Lastly, I created three graphs using incidents, fatal accidents and fatalities against number of available seat kilometers per week. In this way we can clearly see that some airlines are outliers and that are out of the logic that the more the airline fly, the more incidents, fatal accidents or fatalities would suffer from. Therefore, the outlier airlines are more likely to suffer this kind of accidents.
-```{r plot1, echo=FALSE}
-plot(mydat$avail_seat_km_per_week, mydat$total_incidents)
-```
 
-```{r plot2, echo=FALSE}
+
+```{r plot1, echo=FALSE}
 plot(mydat$avail_seat_km_per_week, mydat$total_incidents, main = "Airline Incidents by KMs Flown Per Week", xlab = "Total Incidents", ylab = "KMs flown per week")
 ```
 
-```{r echo=FALSE}
-plot(mydat$avail_seat_km_per_week, mydat$total_fatal_accidents)
+```{r plot2, echo=FALSE}
+plot(mydat$avail_seat_km_per_week, mydat$total_fatal_accidents, main = "Airline Fatal Accidents by KMs Flown Per Week", xlab = "Total Fatal accidents", ylab = "KMs flown per week")
 ```
 
-```{r echo=FALSE}
-plot(mydat$avail_seat_km_per_week, mydat$total_fatalities)
+```{r plot3, echo=FALSE}
+plot(mydat$avail_seat_km_per_week, mydat$total_fatalities, main = "Airline Fatalities by KMs Flown Per Week", xlab = "Total Fatalities", ylab = "KMs flown per week")
 ```
